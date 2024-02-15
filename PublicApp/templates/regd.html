@@ -1,0 +1,148 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <title>Registration</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="HTML5 Website">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="{% static 'PublicStatic/images/favicon.png' %}" rel="shortcut icon" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'PublicStatic/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'PublicStatic/css/login.css' %}" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'PublicStatic/fonts/css/font-awesome.min.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <header style="color: blue;font-family:Algerian;">
+        <h1>
+            <marquee behavior="alternate">TO LODGE FIR REGISTER HERE</marquee>
+        </h1>
+    </header>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+
+                <img src="{% static 'PublicStatic/images/Odisha_Police_Logo.png' %}"
+                    style="margin-top:300px;width:100px;height:100px;">
+                <h3>Odisha Police</h3>
+            </div>
+
+            <div class="col-md-9 register-right">
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading" style=" color:rgb(3, 58, 12); font-family:Algerian;">
+                             <strong>REGISTER HERE AS</strong>
+                        </h3>
+                        <form action='/regd/' method='POST' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if message %}
+                            <center style="color:red;">{{message}}</center>
+                            {% endif %}
+                
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div><br>
+                                        <select class="form-control" name="usertype">
+                                            <option>Victim</option>
+                                            <option>Police Staff</option>
+                                            <option>SP</option>
+                                        </select>
+
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name *"
+                                            name="first_name" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name *"
+                                            name="last_name" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Email *" name="email"
+                                            required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" minlength="10" maxlength="10" name="contact"
+                                            class="form-control" placeholder="Your Phone *" required/>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="maxl">
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="male" checked>
+                                                <span> Male </span>
+                                            </label>
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="female">
+                                                <span>Female </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="Date" class="form-control" placeholder="DOB*" name="DOB"
+                                            required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Adhaar No.*"
+                                            name="adhaar_no" required />
+
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="User Name*" name="username"
+                                            required />
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <input type="password" minlength="6" name="pass1"
+                                            class="form-control" placeholder="Password*"  required />
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password*"
+                                            name="pass2"  required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" placeholder="uploadimage*" name="profile_pic"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Register</button><br>
+                                </div>  
+                             </form>
+                             <div>
+                                Already have an account?? <a class="nav-link" href="/login/"><u>Click Here</u></a>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </div>
+    </div>
+    
+ </div>
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

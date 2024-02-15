@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>View Complain</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <form>
+            <label>
+              <p class="label-txt">ENTER YOUR NAME</p>
+              <input type="text" class="input">
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
+            <label>
+              <p class="label-txt">ENTER YOUR NUMBER</p>
+              <input type="text" class="input">
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
+            <label>
+              <p class="label-txt">COMPLAIN DETAILS</p>
+              <input type="text" class="input">
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
+            <button type="submit">SUBMIT</button>
+        </form>
+
+
+{% endblock %}

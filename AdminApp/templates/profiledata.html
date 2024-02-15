@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="content mt-2">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <form class="row">
+
+                            <div class="col-md-12 border-right">
+                                <div class="p-12 py-12">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        {% if request.user.user_details.first.profilePicture %}
+                                        <div class="col-md-12">
+                                            <p>
+                                            <img src="{{request.user.user_details.first.profilePicture.url}}" height="100" width="150" style="border-radius: 50%;"/>
+                                            </p>     
+                                        </div>
+                                        {% else %}
+                                        <div class="col-md-12">
+                                            <p>
+                                                <img src="{% static 'AdminStatic/images/figure/admin.png' %}" alt="User Avatar" height="100" width="150" style="border-radius: 50%;" />
+                                            </p>     
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="row mt-12">
+                                        <div class="col-md-12">
+                                            <p>
+                                            <strong>
+                                                    Full Name
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <span>{{request.user.first_name}} {{request.user.last_name}}</span>
+                                            </p>     
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="labels">
+                                                <strong>
+                                                    Email
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <strong>{{request.user.email}}</strong>
+                                            </p>
+                
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="labels">
+                                                <strong>
+                                                    Contact Number
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <strong>{{request.user.user_details.first.contact_No}}</strong>
+                                            </p>
+                
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="labels">
+                                                <strong>
+                                                    Gender
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <strong>{{request.user.user_details.first.gender}}</strong>
+                                            </p>
+                
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="labels">
+                                                <strong>
+                                                    Addhar Number
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <strong>{{request.user.user_details.first.adhaar_no}}</strong>
+                                            </p>
+                
+                                        </div>
+                                    <div class="col-md-12">
+                                            <p class="labels">
+                                                <strong>
+                                                    Date of Birth
+                                                </strong>&nbsp; &nbsp;&nbsp;&nbsp;
+                                                <strong>{{request.user.user_details.first.DOB}}</strong>
+                                            </p>
+                
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

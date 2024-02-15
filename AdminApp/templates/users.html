@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <h5>Filter User</h5>
+        <select id="Menus">
+        <option value="nothing" selected="selected">---------</option>
+        
+        <!-- <option class="btn float-right" value="/provided-service/{{p.id}}/">{{p}}</option> -->
+        <option class="btn float-right" value="/all-police-user/">Police Staff</option>
+        <option class="btn float-right" value="/all-victim-user/">Victims</option>
+        <option class="btn float-right" value="/all-admin-user/">Admin</option>
+        <script type="text/javascript">
+            var urlmenu = document.getElementById("Menus");
+            urlmenu.onchange=function(){
+                var userOption = this.options[this.selectedIndex];
+                if (userOption.value != "nothing"){
+                    window.open(userOption.value, "Hi", "");
+                }
+            }
+        </script>
+        
+    </select>
+</div>
+
+        <div class="content mt-3">
+            
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <h3 class="container">All User Details</h3><br>
+                            <div class="card-body" >
+                                <table class="table table-striped table-bordered" >
+                                    <thead>
+                                        <tr style="background-color: #a5a5a5;">
+                                            <th>Full Name</th>
+                                            <th>User Type</th>
+                                            <th>Date of Birth</th>
+                                            <th>Email</th>
+                                            <th>Contact No</th>
+                                            
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for v in users %}
+                                        <tr>
+                                            <td>{{v.user.first_name}} {{v.user.last_name}}</td>
+                                            <td>{{v.userType}}</td>
+                                            <td>{{v.DOB}}</td>
+                                            <td>{{v.user.email}}</td>
+                                            <td>{{v.contact_No}}</td>
+                                            
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#edit" title="View">
+                                                    <a href="/view-user/{{v.id}}/"><i class="fa fa-eye"></i></a>
+                                                </button>&nbsp;
+                                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit" title="Edit">
+                                                    <a href="/edit-user/{{v.id}}/"><i class="fa fa-edit"></i></a>
+                                                </button>&nbsp;
+                                                <button type="button" class="btn btn-sm btn-danger" title="Delete">
+                                                    <a href="/delete-user/{{v.id}}/"><i class="fa fa-trash"></i></a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                
+                                {% if users.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if users.has_previous %}
+                                    <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                                    {% else %}
+                                    <li class="disabled"><span>&laquo;</span></li>
+                                    {% endif %}
+                                    {% for i in users.paginator.page_range %}
+                                    {% if users.number == i %}
+                                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                    {% else %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if users.has_next %}
+                                    <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                                    {% else %}
+                                    <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+{% endblock %}

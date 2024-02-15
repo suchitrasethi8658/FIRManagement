@@ -1,0 +1,240 @@
+<!doctype html> {% load static %}
+{% block content %} 
+
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crime Reporting System </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}">
+    <link rel="apple-touch-icon" href="{% static 'AdminStatic/apple-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'AdminStatic/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/themify-icons/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/selectFX/css/cs-skin-elastic.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/vendors/jqvmap/dist/jqvmap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AdminStatic/assets/css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">Crime Management</a>
+                
+            </div>
+
+
+            <ul class="nav navbar-nav">
+
+                <h3 class="dropdown-btn text-white"><i class="menu-icon fa fa-dashboard "></i>&nbsp;&nbsp;&nbsp;DASHBOARD
+
+                </h3>
+
+            </ul>
+            <ul class="nav navbar-nav">
+               {% if request.user.user_details.first.userType == 'Victim' %}
+                <h6 class="dropdown-btn"><i class="menu-icon fa fa-user "></i>&nbsp;&nbsp;&nbsp;USER
+                    <i class="fa fa-caret-down"></i>
+                </h6>
+                <div class="dropdown-container">
+                    <li>
+                        <a href="/police-view/"></a>
+                        <h6 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;View Complain Details</h6>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="/lodge-fir/">
+                            <h6 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;LODGE FIR</h6>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="/track-complain/">
+                            <h3 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;TRACK COMPLAIN</h3>
+                        </a>
+
+                    </li>
+
+
+                </div>
+            </ul>{% endif %}
+            {% if request.user.user_details.first.userType == 'Police Staff' %}
+            <ul class="nav navbar-nav">
+                <h6 class="dropdown-btn"><i class="menu-icon fa fa-male"></i>&nbsp;&nbsp;&nbsp;POLICE
+                    <i class="fa fa-caret-down"></i>
+                </h6>
+                <div class="dropdown-container">
+                    <li>
+                        <a href="/police-view/">
+                            <h3 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;VIEW</h3>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="/fir-section/">
+                            <h3 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;FIR SECTION</h3>
+                        </a>
+
+                    </li>
+
+
+                </div>
+            </ul>{% endif %}
+            {% if request.user.is_superuser %}
+            <ul class="nav navbar-nav">
+                <h6 class="dropdown-btn"><i class="menu-icon fa fa-user-secret"></i>&nbsp;&nbsp;&nbsp;SP
+                    <i class="fa fa-caret-down"></i>
+                </h6>
+                <div class="dropdown-container">
+                    <li>
+                        <a href="/track-fir/">
+                            <h3 class="menu-title text-white dropdown-btn">&nbsp;&nbsp;&nbsp;TRACK FIR</h3>
+                        </a>
+
+                    </li>
+
+
+                </div>
+            </ul>{% endif %}
+            </div>
+
+        </nav>
+    </aside>
+
+
+
+
+    <div id="right-panel" class="right-panel" style="background-image: url('/static/AdminStatic/images/224.jpeg'); height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
+
+
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+
+
+                <div class="col-sm-12">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{% static 'AdminStatic/images/figure/admin.png' %}" alt="User Avatar">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="user-area dropdown float-left">
+
+                        <div clas
+                        s="user-menu dropdown-menu">
+                            <a class="nav-link" href="/" ><i class="fa fa-user" ></i> HOME</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+
+                </div>
+            </div>
+        </div>
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+
+
+                    <div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+
+                            <div class="col-md-12 border-right">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Profile Settings</h4>
+                                    </div>
+                                    <form action="/changepass/" method="POST">
+                                        {% csrf_token %}
+                                        {% if message %}
+                                        <center style="color:red;">{{message}}</center>
+                                        {% endif %}
+
+                                            <b><label class="labels">Enter Old Password</label></b>
+                                            <input type="text" name="oldpass" class="form-control" placeholder="Enter Old Password" required>
+                                            <b><label class="labels">New Password</label></b>
+                                            <input type="password" name="pass1" class="form-control" placeholder="Enter New Password" required>
+                                            <b><label class="labels">Confirm Password</label></b>
+                                            <input type="password" class="form-control" name="pass2" placeholder="Enter Confirm Password" required><br>
+                                            <input type="submit" name="submit" value="Change Password">
+                                            
+                                        </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+<script src="{% static 'AdminStatic/vendors/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/popper.js/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'AdminStatic/assets/js/main.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/jszip/dist/jszip.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/pdfmake/build/pdfmake.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/pdfmake/build/vfs_fonts.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'AdminStatic/vendors/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+<script src="{% static 'AdminStatic/assets/js/init-scripts/data-table/datatables-init.js' %}"></script>
+
+
+</body>
+
+</html>

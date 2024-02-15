@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <form action="/edit-user/{{details.id}}/" method="POST" class="row" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if msg %}
+                            <p style="color: red;">{{msg}}</p>
+                            {% endif %}
+                            <div class="col-md-12 border-right">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Update Profile Info</h4>
+                                    </div> 
+                                    
+                                    {% if details.profilePicture %}
+                                    <img class="user-avatar rounded-circle" src="{{details.profilePicture.url}}" alt="User Avatar" height="100" width="150">
+                                    {% else %}
+                                    <img class="user-avatar rounded-circle" src="{% static 'AdminStatic/images/figure/admin.png' %}" alt="User Avatar" height="100" width="150">
+                                    {% endif %}
+        
+                                    <div class="row mt-6">
+                                        <div class="col-md-6">
+                                            <p class="labels">
+                                                <strong>FirstName</strong>
+                                                <input type="text" class="form-control" placeholder="first name" name="first_name" value="{{details.user.first_name}}" required>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="labels"><strong>Surname</strong>
+                                            <input type="text" class="form-control" value="{{details.user.last_name}}" name="last_name" placeholder="surname" required>
+                                        </p>
+                                        </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="labels"><strong>Email</strong></p>
+                                            <input type="email" class="form-control" placeholder="enter phone number" name="email" value="{{details.user.email}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="labels"><strong>Addhar Card No.</strong></p>
+                                            <input type="number" class="form-control" placeholder="enter Addhar number" name="addhar" value="{{details.adhaar_no}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="labels"><strong>Phone Number</strong></p>
+                                            <input type="number" class="form-control" placeholder="enter phone number" name="contact" value="{{details.contact_No}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="labels"><strong>Date of Birth</strong></p>
+                                            <input type="date" class="form-control" name="dob" value="{{details.DOB|date:'Y-m-d'}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="labels"><strong>Profile Picture</strong></p>
+                                            <input type="file" class="form-control" placeholder="enter phone number" name="pic" >
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mt-5 text-center">
+                                        <input type="submit" class="btn btn-primary profile-button" value="Update">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

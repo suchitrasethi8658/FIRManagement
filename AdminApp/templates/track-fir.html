@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <!--////////////////table start/////////////////-->
+        <div class="dashboard-content-one">
+
+
+
+
+            <div class="row pt-5">
+                <div class="container">
+
+                    <table class="table" style="background-color: white;">
+                        <thead>
+                            <tr>
+                                <th>FIR Id.</th>
+                                <th>Name</th>
+                                <th>Complain</th>
+                                <th>Police Station</th>
+                                <th>Incident Date</th>
+                                <th>Incident Time</th>
+                                <th>Current Status</th>
+                                <th>Action Taken</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if track %}
+                            {% for t in track %}
+                            <tr>
+                                <td>{{t.fir.id}}</td>
+                                <td>{{t.user.user.first_name}} {{t.user.user.last_name}}</td>
+                                <td style="width: 100px;">{{t.fir.subject}}</td>
+                                <td style="width: 100px;">{{t.police_station}}</td>
+                                <td>{{t.fir.incident_date}}</td>
+                                <td>{{t.fir.incident_time}}</td>
+                                <td>{{t.current_status}}</td>
+                                <td>
+                                    <a href="/edit-fir/{{t.id}}/" class="btn btn-info text-white"><i class="fa fa-edit"></i></a>
+                                    {% if request.user.user_details.first.userType == "SP" %}
+                                    <a href="/delete-fir/{{t.fir.id}}/" class="btn btn-danger text-white"><i class="fa fa-trash"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                                No Data Found
+                            {% endif %}
+
+                        </tbody>
+                    </table>
+
+                    {% if track.has_other_pages %}
+                        <ul class="pagination">
+                            {% if track.has_previous %}
+                            <li><a href="?page={{ track.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in track.paginator.page_range %}
+                            {% if track.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if track.has_next %}
+                            <li><a href="?page={{ track.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                </div>
+
+
+            </div>
+            
+        </div>
+
+    </div>
+{% endblock %}

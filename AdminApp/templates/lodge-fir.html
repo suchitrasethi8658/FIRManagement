@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+        <form action="/lodge-fir/" method="POST">
+            {% csrf_token %}
+            {% if msg %}
+            <p style="color: red;">{{msg}}</p>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-6">
+                
+                <select name="category" class="form-control mt-5">
+                    <option>Theft</option>
+                    <option>Stolen</option>
+                    <option>Murder</option>
+                    <option>Rape</option>
+                    <option>Missing Report</option>
+                    <option>Other</option>
+              </select>
+                </div>
+                
+                <div class="col-md-6">
+                    <input type="text" class="form-control mt-5" style="width: 200px;" name="subject" placeholder="Enter Subject" required />
+                </div>
+            </div>
+
+            <h4 class="pt-5">Describe Your Complain</h4>
+            <div class="form-group pt-3">
+                <textarea placeholder="Enter Description" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 20vh;" required></textarea>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -5px;">Date of Incident</label>
+                <div class="col-xs-9">
+                    <input type="date" name="incident_date" class="form-control" id="name" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -5px;">Time of Incident</label>
+                <div class="col-xs-9">
+                    <input type="time" class="form-control" id="name" name="incident_time" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -5px;">Place of Incident</label>
+                <textarea name="place_of_incident" placeholder="Place of Incident" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -5px;">Contact Person Number</label>
+                <div class="col-xs-9">
+                    <input type="number" placeholder="Contact Number" class="form-control" id="name" name="mobile_no" required />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -5px;">Nearest Police Station</label>
+                <div class="col-xs-9">
+                    <input type="text" placeholder="Near police Station" class="form-control" id="name" name="police_station" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="name" class="col-xs-3 col-form-label mr-2" style="margin-top: -9px;">Any Eyewitness</label>
+                <div class="col-xs-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="text" name="eye_witness_name" id="inlineRadio1" placeholder="Enter Witness Name">                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="offset-xs-3 col-xs-9">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

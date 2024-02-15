@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Report</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+            <div class="col-sm-2 col-lg-3">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count"><i class="fa fa-file"></i>10468</span>
+                        </h4>
+                        <p class="text-light">Total Crimes Reported</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-lg-3">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count"><i class="fa fa-users"></i>111</span>
+                        </h4>
+                        <p class="text-light">Total Crimes Solved</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <div class="card text-white bg-flat-color-4">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count"><i class="fa fa-users"></i>111</span>
+                        </h4>
+                        <p class="text-light">Total Crimes on Going</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-3">
+                <div class="card text-white bg-flat-color-2">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count"><i class="fa fa-file"></i>10468</span>
+                        </h4>
+                        <p class="text-light">Action Taken</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--////////////////table start/////////////////-->
+            <div class="dashboard-content-one">
+
+                <div class="breadcrumbs-area">
+                    <h3>View Complains</h3>
+
+                </div>
+
+
+                <div class="row pt-5">
+                    <div class="container">
+
+                        <table class="table" style="background-color: white;">
+                            <thead>
+                                <tr>
+                                    <th>Serial No.</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Complain</th>
+                                    <th>Mobile No.</th>
+                                    <th>Date</th>
+                                    <th>Action Taken</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>A</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/1.png' %}"></td>
+                                    <td>Mobile Theft</td>
+                                    <td>+91 9078787065</td>
+                                    <td>21.7.2015</td>
+                                    <td><a href="/view/" class="btn btn-warning text-white">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>B</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/2.png' %}"></td>
+                                    <td>Rape</td>
+                                    <td>+91 9043258706</td>
+                                    <td>10.3.2015</td>
+                                    <td><a href="/view/" class="btn btn-warning text-white">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>C</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/3.png' %}"></td>
+                                    <td>Stolen Vehicle</td>
+                                    <td>+91 7635462785</td>
+                                    <td>01.7.2016</td>
+                                    <td><a href="/view/" class="btn btn-warning text-white' %}">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>D</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/4.png"></td>
+                                    <td>Missing Phones</td>
+                                    <td>+91 2334739295</td>
+                                    <td>30.1.2018</td>
+                                    <td><a href="/view/" class="btn btn-warning text-white">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>E</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/5.png' %}"></td>
+                                    <td>Theft</td>
+                                    <td>+91 7126534526</td>
+                                    <td>20.7.2018</td>
+                                    <td><a href="/view/" class="btn btn-warning text-white">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>F</td>
+                                    <td><img src="{% static 'AdminStatic/images/figure/6.png' %}"></td>
+                                    <td>Complaint Lodging</td>
+                                    <td>+91 9725367634</td>
+                                    <td>12.9.2018</td>
+                                    <td><a class="btn btn-warning text-white">View</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!--/////////////table end////////////////-->
+
+            </div>
+
+        </div>
+{% endblock content %}
+{% endblock %}

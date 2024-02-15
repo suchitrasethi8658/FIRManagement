@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Justice by freehtml5.co
+	Twitter: http://twitter.com/fh5co
+	URL: http://freehtml5.co
+-->
+<html>
+	{% load static %}
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>FIR Management System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FreeHTML5.co" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400, 900" rel="stylesheet"> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/icomoon.css' %}">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/themify-icons.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/bootstrap.css' %}">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/magnific-popup.css' %}">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/owl.theme.default.min.css' %}">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/flexslider.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'PublicStatic/css/sty.css' %}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'PublicStatic/js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+<link rel="stylesheet"  href="{% static 'PublicStatic/css/cms.css' %}">
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:black;">
+  <a class="navbar-brand" href="#"><img src="{% static 'PublicStatic/images/loggg-removebg-preview.png' %}" style="width:100px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color:white;font-size:15px;padding:20px;">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/services/" style="color:white;font-size:15px;padding:20px;">Services</a>
+      </li>
+
+     
+      <li class="nav-item active">
+        <a class="nav-link" href="/gallery/" style="color:white;font-size:15px;padding:20px;">Gallery</a>
+      </li>
+       
+ <li class="nav-item active">
+        <a class="nav-link" href="/contact/" style="color:white;font-size:15px;padding:20px;">Contact Us</a>
+      </li>
+      
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/profiledata/"><button type="submit" class="loginbtn" style="padding-left:20px;">My Profile</button></a></li>
+        <li>
+        <a class="nav-link" href="/logout/"><button type="submit" class="signupbtn" style="padding-left:20px;">Logout</button></a></li>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/regd/"><button type="submit" class="loginbtn" style="padding-left:20px;">Sign Up</button></a></li>
+        <li>
+        <a class="nav-link" href="/login/"><button type="submit" class="signupbtn" style="padding-left:20px;">Login</button></a></li>
+      </li>
+      {% endif %}
+    </ul>
+    
+  </div>
+</nav>
+{% block content %}{% endblock %}
+
+<!---footer-------------->
+<footer id="gtco-footer" role="contentinfo">
+    <div class="container">
+        
+        <div class="row copyright">
+            <div class="col-md-12">
+                <p class="pull-left">
+                    <small class="block" style="color:white;font-size:20px;">&copy;All Rights Reserved.</small> 
+                    <small class="block" style="color:white;font-size:15px;">Designed by <a href="http://freehtml5.co/" target="_blank">Suchitra & Team</a> </small>
+                </p>
+                <p class="pull-right">
+                    <ul class="gtco-social-icons pull-right">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="{% static 'PublicStatic/js/jquery.min.js' %}"></script>
+<!-- jQuery Easing -->
+<script src="{% static 'PublicStatic/js/jquery.easing.1.3.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'PublicStatic/js/bootstrap.min.js' %}"></script>
+<!-- Waypoints -->
+<script src="{% static 'PublicStatic/js/jquery.waypoints.min.js' %}"></script>
+<!-- Stellar -->
+<script src="{% static 'PublicStatic/js/jquery.stellar.min.js' %}"></script>
+<!-- Magnific Popup -->
+<script src="{% static 'PublicStatic/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'PublicStatic/js/magnific-popup-options.js' %}"></script>
+<!-- Main -->
+<script src="{% static 'PublicStatic/js/main.js' %}"></script>
+
+</body>
+</html>

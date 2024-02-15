@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Track Complain</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i>&nbsp; Add</button>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr style="background-color: #a5a5a5;">
+                                            <th>Crime Description</th>
+                                            <th>Response Date</th>
+                                            <th>Response Time</th>
+                                            <th>Police</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>An illegal act for which someone can be punished</td>
+                                            <td>January 12, 2020</td>
+                                            <td>10:00pm</td>
+                                            <td>Officer Recard</td>
+                                            <td><span class="badge badge-primary">Data</span></td>
+                                            <td><button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>An illegal act for which someone can be punished</td>
+                                            <td>January 12, 2020</td>
+                                            <td>10:00pm</td>
+                                            <td>Officer Recard</td>
+                                            <td><span class="badge badge-primary">User 1</span></td>
+                                            <td><button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                    <tr style="background-color: #a5a5a5;">
+                                        <th>Crime Description</th>
+                                        <th>Response Date</th>
+                                        <th>Response Time</th>
+                                        <th>Police</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="meduimmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Add Reponse Information : </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body card-block">
+                                <div class="form-group">
+                                    <select name="select" id="select" class="form-control">
+                               <option value="0">Select Crime Description</option>
+                                 <option value="1">Data</option>
+                                 <option value="1">Data</option>
+                            </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="select" id="select" class="form-control">
+                               <option value="0">Select Police Officer</option>
+                                 <option value="1">Data</option>
+                                 <option value="1">Data</option>
+                            </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Reponse Date : </label>
+                                    <input type="date" placeholder="+63----------" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Reponse Time : </label>
+                                    <input type="time" placeholder="Enter Email -@-" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Status : </label>
+                                    <input type="text" placeholder="Enter Status" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-right: 66%">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="meduimmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Update Response Information : </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body card-block">
+                                <div class="form-group">
+                                    <select name="select" id="select" class="form-control">
+                               <option value="0">Select Crime Description</option>
+                                 <option value="1">Data</option>
+                                 <option value="1">Data</option>
+                            </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="select" id="select" class="form-control">
+                               <option value="0">Select Police Officer</option>
+                                 <option value="1">Data</option>
+                                 <option value="1">Data</option>
+                            </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Reponse Date : </label>
+                                    <input type="date" placeholder="+63----------" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Reponse Time : </label>
+                                    <input type="time" placeholder="Enter Email -@-" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Status : </label>
+                                    <input type="text" placeholder="Enter Status" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-right: 66%">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

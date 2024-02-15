@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% if request.user.user_details.first.userType == "Victim" %}
+<div class="content mt-3">
+    <div class="col-sm-2 col-lg-4">
+        <div class="card text-white bg-flat-color-1">
+            <div class="card-body pb-0">
+                <h4 class="mb-0">
+                    <span class="count">{{victim_data}}</span>
+                </h4>
+                <p class="text-light">Total FIR Complained</p>
+
+                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                    <canvas id="widgetChart1"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-2 col-lg-4">
+        <div class="card text-white bg-flat-color-1">
+            <div class="card-body pb-0">
+                <h4 class="mb-0">
+                    <span class="count">{{victim_progress_data}}</span>
+                </h4>
+                <p class="text-light">Total FIR In Progress</p>
+
+                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                    <canvas id="widgetChart1"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-2 col-lg-4">
+        <div class="card text-white bg-flat-color-1">
+            <div class="card-body pb-0">
+                <h4 class="mb-0">
+                    <span class="count">{{victim_resolved_data}}</span>
+                </h4>
+                <p class="text-light">Total FIR Resolved</p>
+
+                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                    <canvas id="widgetChart1"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if request.user.user_details.first.userType == "Police Staff" %}
+        <div class="content mt-3">
+            <div class="col-sm-2 col-lg-4">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{Waiting_for_Witness}}</span>
+                        </h4>
+                        <p class="text-light">Total Waiting for Witness</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{Forwared_to_Court}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Forwared to Court</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-2">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{pending_track}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain In Progress</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        {% endif %}
+
+{% if request.user.user_details.first.userType == "SP" %}
+        <div class="content mt-3">
+            <div class="col-sm-2 col-lg-4">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{all_track}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{resolved_track}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Resolve</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-2">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{pending_track}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Pending</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{Waiting_for_Witness}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Waiting for Witness</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-2">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{Forwared_to_Court}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Forwared to Court</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-sm-3 col-lg-4">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span class="count">{{Cancelled}}</span>
+                        </h4>
+                        <p class="text-light">Total Complain Cancelled</p>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endif %}
+        {% endblock %}
